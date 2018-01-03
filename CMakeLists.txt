@@ -44,7 +44,7 @@ ENDIF()
 
 MESSAGE(STATUS "Running cmake version ${CMAKE_VERSION}")
 
-SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake)
+SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
 # First, decide about build type (debug or release)
 # If cmake is invoked with -DCMAKE_BUILD_TYPE,
@@ -129,7 +129,7 @@ OPTION(WITH_DEFAULT_FEATURE_SET
   ON)
 IF(BUILD_CONFIG)
   INCLUDE(
-  ${CMAKE_SOURCE_DIR}/cmake/build_configurations/${BUILD_CONFIG}.cmake)
+  ${CMAKE_CURRENT_SOURCE_DIR}/cmake/build_configurations/${BUILD_CONFIG}.cmake)
 ENDIF()
 
 #cmake on 64bit windows/mac/solaris doesn't set CMAKE_SYSTEM_PROCESSOR correctly
@@ -146,7 +146,7 @@ FOREACH(_base
     ${CMAKE_SYSTEM_NAME}-${CMAKE_SYSTEM_VERSION}-${CMAKE_SYSTEM_PROCESSOR}
     ${CMAKE_SYSTEM_NAME}-${CMAKE_SYSTEM_VERSION}
     ${CMAKE_SYSTEM_NAME})
-  SET(_file ${CMAKE_SOURCE_DIR}/cmake/os/${_base}.cmake)
+  SET(_file ${CMAKE_CURRENT_SOURCE_DIR}/cmake/os/${_base}.cmake)
   IF(EXISTS ${_file})
     INCLUDE(${_file})
     BREAK()
@@ -181,10 +181,10 @@ INCLUDE(CheckTypeSize)
 CHECK_TYPE_SIZE("void *" SIZEOF_VOIDP)
 MESSAGE(STATUS "SIZEOF_VOIDP ${SIZEOF_VOIDP}")
 IF(WITH_DEFAULT_COMPILER_OPTIONS)
-  INCLUDE(${CMAKE_SOURCE_DIR}/cmake/build_configurations/compiler_options.cmake)
+  INCLUDE(${CMAKE_CURRENT_SOURCE_DIR}/cmake/build_configurations/compiler_options.cmake)
 ENDIF()
 IF(WITH_DEFAULT_FEATURE_SET)
-  INCLUDE(${CMAKE_SOURCE_DIR}/cmake/build_configurations/feature_set.cmake)
+  INCLUDE(${CMAKE_CURRENT_SOURCE_DIR}/cmake/build_configurations/feature_set.cmake)
 ENDIF()
 
 # Add macros
@@ -454,7 +454,7 @@ INCLUDE(configure.cmake)
 ADD_DEFINITIONS(-DHAVE_CONFIG_H)
 INCLUDE_DIRECTORIES(
   ${CMAKE_CURRENT_BINARY_DIR}/include
-  ${CMAKE_SOURCE_DIR}/extra/rapidjson/include
+  ${CMAKE_CURRENT_SOURCE_DIR}/extra/rapidjson/include
 )
 
 # Add bundled or system zlib.
@@ -527,12 +527,12 @@ INCLUDE(cmake/tags.cmake)
 
 CONFIGURE_FILE(config.h.cmake   ${CMAKE_BINARY_DIR}/include/my_config.h)
 CONFIGURE_FILE(config.h.cmake   ${CMAKE_BINARY_DIR}/include/config.h)
-CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/include/mysql_version.h.in
+CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/include/mysql_version.h.in
                ${CMAKE_BINARY_DIR}/include/mysql_version.h )
-#CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/sql/sql_builtin.cc.in
+#CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/sql/sql_builtin.cc.in
 #    ${CMAKE_BINARY_DIR}/sql/sql_builtin.cc)
 CONFIGURE_FILE(
-    ${CMAKE_SOURCE_DIR}/cmake/info_macros.cmake.in
+    ${CMAKE_CURRENT_SOURCE_DIR}/cmake/info_macros.cmake.in
     ${CMAKE_BINARY_DIR}/info_macros.cmake @ONLY)
 
 # Handle the "INFO_*" files.
@@ -542,12 +542,12 @@ INCLUDE(${CMAKE_BINARY_DIR}/info_macros.cmake)
 # does "cmake ; make ; git pull ; make".
 CREATE_INFO_SRC(${CMAKE_BINARY_DIR}/Docs)
 ADD_CUSTOM_TARGET(INFO_SRC ALL
-  COMMAND ${CMAKE_COMMAND} -P ${CMAKE_SOURCE_DIR}/cmake/info_src.cmake
+  COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_SOURCE_DIR}/cmake/info_src.cmake
   WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
 )
 # Build flags: This must be postponed to the make phase.
 ADD_CUSTOM_TARGET(INFO_BIN ALL
-  COMMAND ${CMAKE_COMMAND} -P ${CMAKE_SOURCE_DIR}/cmake/info_bin.cmake
+  COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_SOURCE_DIR}/cmake/info_bin.cmake
   WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
 )
 
