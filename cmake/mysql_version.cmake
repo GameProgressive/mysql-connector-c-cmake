@@ -24,7 +24,7 @@ SET(DOT_FRM_VERSION "6")
 
 # Generate "something" to trigger cmake rerun when VERSION changes
 CONFIGURE_FILE(
-  ${CMAKE_SOURCE_DIR}/VERSION
+  ${CMAKE_CURRENT_SOURCE_DIR}/../VERSION
   ${CMAKE_BINARY_DIR}/VERSION.dep
 )
 
