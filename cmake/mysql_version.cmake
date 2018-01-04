@@ -24,14 +24,14 @@ SET(DOT_FRM_VERSION "6")
 
 # Generate "something" to trigger cmake rerun when VERSION changes
 CONFIGURE_FILE(
-  ${CMAKE_CURRENT_SOURCE_DIR}/../VERSION
+  ${CMAKE_CURRENT_SOURCE_DIR}/VERSION
   ${CMAKE_BINARY_DIR}/VERSION.dep
 )
 
 # Read value for a variable from VERSION.
 
 MACRO(MYSQL_GET_CONFIG_VALUE keyword var version_file)
-   FILE (STRINGS ${CMAKE_SOURCE_DIR}/${version_file} str REGEX "^[ ]*${keyword}=")
+   FILE (STRINGS ${CMAKE_CURRENT_SOURCE_DIR}/${version_file} str REGEX "^[ ]*${keyword}=")
    IF(str)
      STRING(REPLACE "${keyword}=" "" str ${str})
      STRING(REGEX REPLACE  "[ ].*" ""  str "${str}")
