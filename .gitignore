@@ -371,3 +371,24 @@ CTestTestfile.cmake
 Makefile
 *.filters
 *.sln
+
+# MySQL specific
+VERSION.dep
+errmsg.sys
+libmysql_exports.def
+libmysql_dummy.c
+api_test.c
+sql_state.h
+mysqld_error.h
+mysqld_errname.h
+info_macros.cmake
+mysql_version.h
+config.h
+my_config.h
+INFO_SRC
+CPackConfig.cmake
+CPackSourceConfig.cmake
+mysqlclient_depends.c
+versioninfo_dll.rc
+versioninfo_exe.rc
+mysqld_ername.h
