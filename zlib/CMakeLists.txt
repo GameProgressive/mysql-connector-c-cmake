@@ -14,8 +14,8 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
 
 INCLUDE_DIRECTORIES(
-${CMAKE_SOURCE_DIR}/include
-${CMAKE_SOURCE_DIR}/zlib
+${CMAKE_CURRENT_SOURCE_DIR}/../include
+${CMAKE_CURRENT_SOURCE_DIR}/../zlib
 )
 SET(ZLIB_SOURCES
   adler32.c

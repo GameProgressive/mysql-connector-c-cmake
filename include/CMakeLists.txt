@@ -14,11 +14,11 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
 
 SET(HEADERS_GEN_CONFIGURE
-${CMAKE_CURRENT_BINARY_DIR}/mysql_version.h
-${CMAKE_CURRENT_BINARY_DIR}/my_config.h
-${CMAKE_CURRENT_BINARY_DIR}/mysqld_ername.h
-${CMAKE_CURRENT_BINARY_DIR}/mysqld_error.h
-${CMAKE_CURRENT_BINARY_DIR}/sql_state.h
+${CMAKE_BINARY_DIR}/include/mysql_version.h
+${CMAKE_BINARY_DIR}/include/my_config.h
+${CMAKE_BINARY_DIR}/include/mysqld_ername.h
+${CMAKE_BINARY_DIR}/include/mysqld_error.h
+${CMAKE_BINARY_DIR}/include/sql_state.h
 )
 SET(HEADERS_ABI
   mysql.h

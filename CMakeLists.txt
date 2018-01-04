@@ -453,7 +453,7 @@ INCLUDE(configure.cmake)
 # Common defines and includes
 ADD_DEFINITIONS(-DHAVE_CONFIG_H)
 INCLUDE_DIRECTORIES(
-  ${CMAKE_CURRENT_BINARY_DIR}/include
+  ${CMAKE_BINARY_DIR}/include
   ${CMAKE_CURRENT_SOURCE_DIR}/extra/rapidjson/include
 )
 
