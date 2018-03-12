@@ -16,6 +16,10 @@
 #ifndef DECIMAL_INCLUDED
 #define DECIMAL_INCLUDED
 
+#if _MSC_VER < 1600
+#include <compat1600/stdint.h>
+#endif
+
 typedef enum
 {TRUNCATE=0, HALF_EVEN, HALF_UP, CEILING, FLOOR}
   decimal_round_mode;

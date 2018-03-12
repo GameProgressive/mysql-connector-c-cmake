@@ -54,6 +54,10 @@ typedef int my_socket;
 #endif /* my_socket_defined */
 #endif /* MY_GLOBAL_INCLUDED */
 
+#if defined(_MSC_VER) && _MSC_VER >= 1600
+	#include "compat1600/stdint.h"
+#endif
+
 #include "mysql_version.h"
 #include "mysql_com.h"
 #include "mysql_time.h"

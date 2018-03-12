@@ -31,7 +31,12 @@
 
 #include "m_string.h"
 
+#if _MSC_VER < 1600
+#include <compat1600/stdint.h>
+#else
 #include <stdint.h>
+#endif
+
 #include <time.h>
 #include <string.h>
 
